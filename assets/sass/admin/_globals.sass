@@ -1,0 +1,26 @@
+
+body
+    background: #ededed
+    padding-top: $the__global__padding * 2
+
+
+.container
+    +media-up(md)
+        padding-left: 300px
+
+
+.tables--action
+    +media-up(md)
+        width: 155px
+
+
+.tables--id
+    +media-up(md)
+        width: 55px
+
+.table > tbody.table__body > tr > td, .table > tfoot.table__foot > tr > td
+    padding: 10px 15px
+    vertical-align: middle
+
+.toUpperCase
+    text-transform: capitalize

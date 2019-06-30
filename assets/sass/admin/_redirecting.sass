@@ -1,0 +1,37 @@
+
+
+
+@keyframes redirecting
+    from
+        transform: rotate(0deg)
+
+    to
+        transform: rotate(359deg)
+
+
+
+.redirecting
+
+    margin: 0px
+    padding: 25px
+    width: 300px
+    background-color: $dark-color
+    color: #e1e1e1
+    +radius
+    +clearfix
+
+    h2
+        font-size: 20px
+        margin-top: 10px
+        float: left
+        text-shadow: black 0px 1px 1px, #999 0px -1px 1px
+
+    &__circle
+        margin-top: -5px
+        float: right
+        width: 30px
+        height: 30px
+        border: 3px solid $primary-color
+        border-bottom-color: $dark-color
+        border-radius: 50px
+        animation: redirecting 0.35s infinite cubic-bezier(0.4, 0, 0.54, 0.96)

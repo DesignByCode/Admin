@@ -1,0 +1,32 @@
+
+.info-block
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: $the__global__padding
+    padding: $the__global__padding
+    color: #fff
+    min-height: 100px
+    +radius
+
+    &--primary
+        background: linear-gradient(to bottom, $primary-color, darken($primary-color, 10%))
+    &--secondary
+        background: linear-gradient(to bottom, $secondary-color, darken($secondary-color, 10%))
+
+    &__icon
+        font-size: 50px
+
+    &__details
+        display: flex
+        justify-content: center
+        align-items: flex-end
+        flex-direction: column
+
+    &__name
+        font-size: 30px
+        margin-bottom: 10px
+        font-weight: 100
+    &__count
+        font-size: 20px
+        font-weight: bold
