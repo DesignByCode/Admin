@@ -58,9 +58,9 @@ class AdminServiceProvider extends ServiceProvider
         ], 'Admin Env');
 
         $this->publishes([
-            __DIR__.'/../../assetsPublic/public/css/admin.css' => app_path('public/css/admin.css'),
-            __DIR__.'/../../assetsPublic/public/js/admin.js' => app_path('public/js/admin.js'),
-            __DIR__.'/../../assetsPublic/public/fonts' => app_path('public/fonts'),
+            __DIR__.'/../../assetsPublic/public/css/admin.css' => public_path('css/admin.css'),
+            __DIR__.'/../../assetsPublic/public/js/admin.js' => public_path('js/admin.js'),
+            __DIR__.'/../../assetsPublic/public/fonts' => public_path('fonts'),
         ], 'Admin Assets');
 
 
