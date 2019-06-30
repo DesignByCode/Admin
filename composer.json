@@ -26,6 +26,11 @@
     },
     "require": {
         "spatie/laravel-permission": "^2.37",
-        "spatie/laravel-medialibrary": "^7.6"
+        "spatie/laravel-medialibrary": "^7.6",
+        "designbycode/laravel-luna-presets": "^2.0",
+        "cyrildewit/eloquent-viewable": "^3.2"
+    },
+    "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.2"
     }
 }
