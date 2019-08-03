@@ -52,7 +52,8 @@ Route::group(
     [
         'middleware' => ['web', 'auth'],
         'namespace' => 'DesignByCode\Admin\Http\Controllers\DataTables',
-        'prefix' => 'datatables'
+        'prefix' => 'datatables',
+        'as' => 'datatables.'
     ], function() {
 
     Route::resource('users', 'UsersController');
