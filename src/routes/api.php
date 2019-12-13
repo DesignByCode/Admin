@@ -20,6 +20,9 @@ Route::group(
     Route::post('products/{product}/active', 'ProductsController@updateActive')->name('api.products.activate');
     Route::post('products/{product}/upload', 'ProductsController@upload')->name('api.products.upload');
     Route::delete('products/{product}', 'ProductsController@delete_image')->name('api.products.image.delete');
+
+    Route::get('category-products/{category}', 'CategoryProductsController@index')->name('api.category.product.index');
+
     /**
      * Galleries
      */
@@ -41,9 +44,13 @@ Route::group(
     /**
      * Model Counters
      */
-    Route::get('counter/users', 'CounterModelsController@users');
-    Route::get('counter/products', 'CounterModelsController@products');
+    foreach (['users', 'products', 'categories', 'tags'] as $value) {
+        Route::get('counter/' . $value , 'CounterModelsController@' . $value);
+    }
+//    Route::get('counter/users', 'CounterModelsController@users');
+//    Route::get('counter/products', 'CounterModelsController@products');
 
+    Route::post('notify/{product}', 'OneSignalController@send');
 
 });
 

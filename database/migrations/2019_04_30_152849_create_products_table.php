@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('sku')->nullable();
             $table->integer('price')->nullable();
             $table->integer('sales_price')->nullable();
+            $table->text('ad_text')->nullable();
             $table->text('excerpt')->nullable();
             $table->text('content')->nullable();
             $table->boolean('live')->default(true);
@@ -28,7 +29,7 @@ class CreateProductsTable extends Migration
             $table->timestamp('publish_at');
             $table->timestamp('sale_end')->nullable();
             $table->timestamps();
-
+            $table->softDeletes();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
         });
     }

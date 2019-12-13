@@ -3,19 +3,20 @@
 namespace DesignByCode\Admin\Models;
 
 
-use DesignByCode\Admin\Traits\LiveAware;
-use DesignByCode\Tagger\Models\TaggableTrait;
-use Illuminate\Database\Eloquent\Model;
 use Spatie\Image\Manipulations;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
+use Illuminate\Database\Eloquent\Model;
+use DesignByCode\Admin\Traits\LiveAware;
 use CyrildeWit\EloquentViewable\Viewable;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use DesignByCode\Tagger\Models\TaggableTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use CyrildeWit\EloquentViewable\Contracts\Viewable as ViewableContract;
 
 class Product extends Model implements HasMedia, ViewableContract
 {
-    use HasMediaTrait, TaggableTrait, Viewable, LiveAware;
+    use HasMediaTrait, TaggableTrait, Viewable, LiveAware, SoftDeletes;
 
     protected $fillable = [
         'name',
@@ -24,6 +25,7 @@ class Product extends Model implements HasMedia, ViewableContract
         'sku',
         'price',
         'sales_price',
+        'ad_text',
         'live',
         'excerpt',
         'content',
@@ -82,6 +84,16 @@ class Product extends Model implements HasMedia, ViewableContract
     {
         // return $query->where('publish_at', function )
     }
+
+    public function getCustomExcerptAttribute()
+    {
+        if ($this->excerpt && $this->content) {  
+            $ex = ($this->excerpt) ? $this->excerpt : $this->content;
+            return trim(substr($ex, 0, 120)) . '...';
+        }
+        return '';
+    }
+
 
 
     /**

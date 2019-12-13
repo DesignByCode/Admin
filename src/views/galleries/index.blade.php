@@ -12,7 +12,7 @@
                     </div>
 
                 </div>
-                <table-data endpoint="{{ route('galleries.index') }}" post_method="edit"></table-data>
+                <table-data endpoint="{{ route('datatables.galleries.index') }}" post_method="edit"></table-data>
             </div>
         </div>
     </div>

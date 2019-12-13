@@ -29,6 +29,7 @@ class ProductUpdateRequest extends FormRequest
             'price' => ['nullable', 'regex:/^\d{1,13}(\.\d{1,4})?$/'],
             'sales_price' => ['nullable', 'regex:/^\d{1,13}(\.\d{1,4})?$/', 'lt:price'],
             'excerpt' => 'nullable|string|max:300',
+            'add_text' => 'nullable|string|max:300',
             'content' => 'nullable|string'
         ];
     }

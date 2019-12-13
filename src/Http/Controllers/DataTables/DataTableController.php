@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Schema;
 
 abstract class DataTableController extends Controller
@@ -124,9 +125,12 @@ abstract class DataTableController extends Controller
         return [];
     }
 
+    /**
+     * @return array
+     */
     public function getFormFieldTypes()
     {
-        return ['text'];
+        return [];
     }
 
     /**
@@ -225,7 +229,7 @@ abstract class DataTableController extends Controller
      */
     protected function resolveQueryParts($operator, $value)
     {
-        return array_get([
+        return Arr::get([
             'equels' => [
                 'operator' => '=',
                 'value' => $value

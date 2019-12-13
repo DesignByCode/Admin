@@ -1,6 +1,6 @@
 <template>
 
-    <div class="info-block info-block--primary">
+    <a :href="data.href" class="info-block info-block--primary">
         <span class="info-block__icon">
             <i v-if="loaded" class="lunacon" :class="data.icon"></i>
 
@@ -9,7 +9,7 @@
             <div class="info-block__name">{{ data.model }}</div>
             <div class="info-block__count">{{ count }}</div>
         </div>
-    </div>
+    </a>
 
 </template>
 

@@ -2,16 +2,17 @@
 
 namespace DesignByCode\Admin\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Spatie\Image\Manipulations;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 class Category extends Model implements HasMedia
 {
 
-    use HasMediaTrait;
+    use HasMediaTrait, SoftDeletes;
 
     protected $fillable = ['name', 'slug'];
 
@@ -23,6 +24,7 @@ class Category extends Model implements HasMedia
     {
         return $this->hasMany(Product::class);
     }
+
 
 
     /**

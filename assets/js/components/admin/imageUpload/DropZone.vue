@@ -28,6 +28,7 @@
 
                 dropzone.on('success', function(photo, response) {
                     photo.id = response.id
+                    
                 })
 
                 if (this.object.length) {
@@ -35,7 +36,10 @@
                         var mock = {id: element.id, name: element.name, size: element.size, order_column: element.order_column};
                         dropzone.emit('addedfile', mock);
                         var file = element.file_name
-                        dropzone.emit('thumbnail',mock, `${appurl}/storage/${element.id}/conversions/${file.replace(/(\.[\w\d_-]+)$/i, '-thumb$1')}`);
+                        console.log(file);
+                        // console.log(`${appurl}/storage/${element.id}/conversions/${file.replace(/(\.[\w\d_-]+)$/i, '-thumb$1')}`);
+                        // dropzone.emit('thumbnail', mock, `${appurl}/storage/${element.id}/conversions/${file.replace(/(\.[\w\d_-]+)$/i, '-thumb$1')}`);
+                        dropzone.emit('thumbnail', mock, `${appurl}/storage/${element.id}/conversions/${file.replace(/(\.[\w\d_-]+)/, '-thumb.jpg')}`);
                     })
                 }
 

@@ -2,13 +2,12 @@
 
 namespace DesignByCode\Admin\Providers;
 
-
-use DesignByCode\Admin\Models\Category;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Route;
 use DesignByCode\Admin\Models\Gallery;
 use DesignByCode\Admin\Models\Product;
-use Illuminate\Support\Facades\Route;
+use DesignByCode\Admin\Models\Category;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Str;
 
 class AdminServiceProvider extends ServiceProvider
 {
@@ -54,7 +53,7 @@ class AdminServiceProvider extends ServiceProvider
 
 
         $this->publishes([
-            __DIR__.'/../../env/env.admin.example' => app_path('env.admin.example')
+            __DIR__.'/../../env/.env.admin.example' => base_path('.env.admin.example')
         ], 'Admin Env');
 
         $this->publishes([
@@ -62,7 +61,6 @@ class AdminServiceProvider extends ServiceProvider
             __DIR__.'/../../assetsPublic/public/js/admin.js' => public_path('js/admin.js'),
             __DIR__.'/../../assetsPublic/public/fonts' => public_path('fonts'),
         ], 'Admin Assets');
-
 
 
         Category::creating(function($query) {

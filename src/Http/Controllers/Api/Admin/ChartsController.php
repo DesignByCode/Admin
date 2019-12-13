@@ -15,9 +15,9 @@ use CyrildeWit\EloquentViewable\Support\Period;
 class ChartsController extends Controller
 {
 
-    public function categories_added()
+    public function categories_added($days = 30)
     {
-        $day1 = Carbon::parse('now')->subDays(30)->startOfDay();
+        $day1 = Carbon::parse('now')->subDays($days)->startOfDay();
         $day2 = Carbon::parse('now')->endOfDay();
 
         $products = Category::select($this->querySelect())
@@ -29,9 +29,9 @@ class ChartsController extends Controller
         return $this->dataLoop($products);
     }
 
-    public function users_added()
+    public function users_added($days = 30)
     {
-        $day1 = Carbon::parse('now')->subDays(30)->startOfDay();
+        $day1 = Carbon::parse('now')->subDays($days)->startOfDay();
         $day2 = Carbon::parse('now')->endOfDay();
 
         $users = User::select($this->querySelect())

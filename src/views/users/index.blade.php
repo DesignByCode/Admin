@@ -3,9 +3,13 @@
 @section('content')
     <div class="wrapper">
         <div class="row">
-            {{--<data-table endpoint="{{ route('users.index') }}"></data-table>--}}
+            <div class="panel panel--default">
+                <div class="panel__header">
+                    Users
+                </div>
+            </div>
 
-            <table-data endpoint="{{ route('users.index') }}" post_method="edit"></table-data>
+            <table-data endpoint="{{ route('datatables.users.index') }}" post_method="edit"></table-data>
         </div>
     </div>
 @endsection

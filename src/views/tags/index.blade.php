@@ -14,7 +14,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <table-data endpoint="{{ route('tags.index') }}" post_method="edit"></table-data>
+                <table-data endpoint="{{ route('datatables.tags.index') }}" post_method="edit"></table-data>
             </div>
         </div>
     </div>

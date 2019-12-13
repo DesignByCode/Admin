@@ -1,3 +1,5 @@
+a.info-block
+  color: #fff
 
 .info-block
     display: flex
@@ -6,8 +8,10 @@
     margin-bottom: $the__global__padding
     padding: $the__global__padding
     color: #fff
-    min-height: 100px
+    min-height: 120px
     +radius
+    &:hover
+      text-decoration: none
 
     &--primary
         background: linear-gradient(to bottom, $primary-color, darken($primary-color, 10%))

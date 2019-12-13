@@ -2,11 +2,11 @@
 
 namespace DesignByCode\Admin\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\Models\Media;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\Models\Media;
 
 class Gallery extends Model implements HasMedia
 {

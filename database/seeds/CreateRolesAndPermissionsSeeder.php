@@ -15,9 +15,9 @@ class CreateRolesAndPermissionsSeeder extends Seeder
     {
 
        User::create([
-            'name' => 'Claude Myburgh',
-            'email' => 'claude@designbycode.co.za'
-            'password' => bcrypt('CMyburgh1978')
+           'name' => config('admin.auth.name'),
+           'email' => config('admin.auth.email'),
+           'password' => bcrypt(config('admin.auth.password')),
         ]);
 
         Role::create(['name' => 'super-admin']);

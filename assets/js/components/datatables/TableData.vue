@@ -18,14 +18,12 @@
                         </a>
                     </div>
                 </div>
-
                 <div class="modal__holder" v-if="creating.active" >
                     <div class="modal">
                         <div class="modal__header">{{ response.modal_text }}</div>
                         <div class="modal__body">
                             <form action="#" @submit.prevent="store">
                                 <div class="form__group" v-for="column in response.updatable" :class="{ 'has__danger': creating.errors[column] }">
-                                    {{response.form_field_type[column]}}
                                     <div v-if="response.form_field_type[column] === 'text'">
                                         <label :for="column" class="form__label font--bold">{{ response.custom_columns[column] || column.toUpperCase() }}</label>
                                         <input :type="response.form_field_type[column] === 'textarea' ? 'text' : response.form_field_type[column]  " :id="column" class="form__item" v-model="creating.form[column]">
@@ -43,8 +41,8 @@
                                     </div>
 
                                     <span class="form__helper" v-if="creating.errors[column]">
-										{{ creating.errors[column][0] }}
-									</span>
+                                      {{ creating.errors[column][0] }}
+									                  </span>
                                 </div>
                                 <div class="form__group text--danger">
                                     <button type="submit" class="btn btn--primary">Create</button>
@@ -265,6 +263,7 @@
                 return axios.get(`${this.endpoint}?${this.getQueryParameters()}`).then((response) => {
                     this.response = response.data.data
                     this.loaded = true
+                    // console.log(`${this.endpoint}?${this.getQueryParameters()}`)
                 })
             },
             showSwal () {

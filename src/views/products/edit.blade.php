@@ -17,7 +17,7 @@
                     <div class="panel__header">{{ __('Products Images') }}</div>
                     <div class="panel__body">
                         <drop-zone
-                            :object="{{$product->getMedia('product')}}"
+                            :object="{{ $product->getMedia('product') }}"
                             photo="products"
                             upload="{{ route('api.products.upload', [$product])  }}"
                             remove="api/products">

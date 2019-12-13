@@ -27,6 +27,7 @@ class ProductResource extends JsonResource
             'sales_price' => $this->sales_price,
             'excerpt' => $this->excerpt,
             'content' => $this->content,
+            'ad_text' => $this->ad_text,
             'live' => $this->live,
             'availability' => $this->availability,
             'sale_end' => ($this->sale_end !== null) ? $this->sale_end->toDateString() : '',
@@ -34,7 +35,8 @@ class ProductResource extends JsonResource
             // 'sale_end' => Carbon::createFromFormat('Y-m-d H:i:s', $this->sale_end)->format('Y-m-d'),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'tags' => new TagsCollection($this->tags)
+            'tags' => new TagsCollection($this->tags),
+            'images' => MediaResource::collection($this->media)
         ];
     }
 }

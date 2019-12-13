@@ -11,6 +11,8 @@ class UsersController extends DataTableController
     protected $allowCreation = false;
     protected $allowDeletion = true;
     protected $searchable = true;
+    protected $allowQuickEdit = false;
+    protected $allowFullEdit = false;
 
     /**
      * @return \Illuminate\Database\Eloquent\Builder
@@ -25,7 +27,7 @@ class UsersController extends DataTableController
      */
     public function getDisplayableColumns()
     {
-        return ['id','name', 'email'];
+        return ['id','name', 'email', 'phone' , 'country'];
     }
     /**
      * @return array

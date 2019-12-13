@@ -33,7 +33,7 @@
         </div>
         <div class="row">
             <div class="md-col-12">
-                <table-data endpoint="{{ route('products.index') }}"></table-data>
+                <table-data endpoint="{{ route('datatables.products.index') }}"></table-data>
             </div>
         </div>
     </div>

@@ -25,7 +25,6 @@ class ProductsController extends Controller
     public function edit(Product $product)
     {
         $views = views($product)->count();
-
         return view('admin::products.edit', compact('product', 'views'));
     }
 

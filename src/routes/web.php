@@ -39,5 +39,11 @@ Route::group(
      */
     Route::get('tags', 'TagsController@index')->name('tags.index');
     Route::get('tags/{tag}', 'TagsController@edit')->name('tags.edit');
+
+    /**
+     * Notifacations
+     */
+    
+    Route::get('notifacation', 'NotifacationsController@index')->name('notifacation.index');
 });
 
