@@ -17,6 +17,38 @@
                 </div>
             </div>
 
+            <template v-if="more">
+
+                <div class="form__group" :class="errors.description ? 'has__danger' : ''">
+                    <label for="slug" class="font--bold">Category Description</label>
+                    <textarea name="description" id="description"  class="form__item" rows="5" v-model="form.description"></textarea>
+                    <div class="form__helper" v-if="errors.description">
+                        {{ errors.description[0] }}
+                    </div>
+                </div>
+
+
+                <div class="form__group" :class="errors.content ? 'has__danger' : ''">
+                    <label for="slug" class="font--bold">Category Content</label>
+                    <textarea name="content" id="content"  class="form__item" rows="10" v-model="form.content"></textarea>
+                    <div class="form__helper" v-if="errors.content">
+                        {{ errors.content[0] }}
+                    </div>
+                </div>
+
+            </template>
+            <template v-else>
+                <div class="form__group">
+                    <button @click.prevent="showMore" class="btn btn--default">Show More</button>
+                </div>
+            </template>
+
+            <template v-if="more">
+                <div class="form__group">
+                    <button @click.prevent="showMore" class="btn btn--default">Show Less</button>
+                </div>
+            </template>
+
             <div class="form__group">
                 <button class="btn btn--primary-gradient">Update Category <span v-if="processing" class="mini-loader"></span></button>
             </div>
@@ -42,13 +74,20 @@
                 errors: [],
                 processing: false,
                 form: this.category,
-                data: null
+                data: null,
+                show: false
             }
         },
         computed: {
-            slug: function() {
+            slug() {
                 var slug = this.sanitizeTitle(this.category.name);
                 return slug;
+            },
+            more () {
+                if(this.form.description || this.form.content && !this.show) {
+                    return !this.show
+                }
+                return this.show
             }
         },
         methods: {
@@ -85,6 +124,9 @@
                 slug = slug.replace(/\s+/g, '-');
 
                 return slug;
+            },
+            showMore() {
+                this.show = !this.show
             }
         },
         created() {

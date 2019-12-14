@@ -27,6 +27,7 @@
     "require": {
         "php": "^7.2",
         "spatie/laravel-medialibrary": "^7.14",
+        "cyrildewit/eloquent-viewable": "^4.1",
         "spatie/laravel-permission": "^3.2",
         "designbycode/tagger": "^2.0",
         "berkayk/onesignal-laravel": "^1.0"   

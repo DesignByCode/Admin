@@ -16,24 +16,25 @@ class Gallery extends Model implements HasMedia
     protected $fillable = ['name'];
 
 
+
     /**
      *
      */
     public function registerMediaCollections()
     {
-        $this->addMediaCollection('gallery')
+        $this->addMediaCollection('galery')
             ->registerMediaConversions(function (Media $media) {
                 $this->addMediaConversion('card')
-                    ->crop(Manipulations::CROP_CENTER, 180, 300)
+                    ->crop(Manipulations::CROP_CENTER, config('admin.img.card.width'), config('admin.img.card.height'))
                     ->optimize()
-                    ->width(300)
-                    ->height(180);
+                    ->width(config('admin.img.card.width'))
+                    ->height(config('admin.img.card.height'));
 
                 $this->addMediaConversion('thumb')
-                    ->crop(Manipulations::CROP_CENTER, 140, 140)
+                    ->crop(Manipulations::CROP_CENTER, config('admin.img.thumbnail.width'), config('admin.img.thumbnail.height'))
                     ->optimize()
-                    ->width(140)
-                    ->height(140);
+                    ->width(config('admin.img.thumbnail.width'))
+                    ->height(config('admin.img.thumbnail.height'));
             });
     }
 
