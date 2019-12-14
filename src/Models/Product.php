@@ -109,16 +109,16 @@ class Product extends Model implements HasMedia, ViewableContract
         $this->addMediaCollection('product')
             ->registerMediaConversions(function (Media $media) {
                 $this->addMediaConversion('card')
-                    ->crop(Manipulations::CROP_CENTER, config('admin.img.card.width'), config('admin.img.card.height'))
+                    ->crop(Manipulations::CROP_CENTER,(int) config('admin.img.card.width'),(int) config('admin.img.card.height'))
                     ->optimize()
-                    ->width(config('admin.img.card.width'))
-                    ->height(config('admin.img.card.height'));
+                    ->width((int)config('admin.img.card.width'))
+                    ->height((int)config('admin.img.card.height'));
 
                 $this->addMediaConversion('thumb')
-                    ->crop(Manipulations::CROP_CENTER, config('admin.img.thumbnail.width'), config('admin.img.thumbnail.height'))
+                    ->crop(Manipulations::CROP_CENTER,(int) config('admin.img.thumbnail.width'),(int) config('admin.img.thumbnail.height'))
                     ->optimize()
-                    ->width(config('admin.img.thumbnail.width'))
-                    ->height(config('admin.img.thumbnail.height'));
+                    ->width((int)config('admin.img.thumbnail.width'))
+                    ->height((int)config('admin.img.thumbnail.height'));
             });
     }
 
