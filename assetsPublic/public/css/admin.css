@@ -9926,33 +9926,6 @@ body {
   text-transform: capitalize;
 }
 
-body.auth {
-  padding-top: 0 !important;
-  background: #051219;
-  height: 100vh;
-}
-
-body.auth .main {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  width: 400px;
-  max-width: 98%;
-  margin: auto;
-  height: 100vh;
-}
-
-body.auth .auth--block {
-  width: 400px;
-  max-width: 98%;
-}
-
 .menu {
   position: fixed;
   top: 0px;
