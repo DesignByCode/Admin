@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form @submit.prevent="updateCategory">
+        <form ref="form" @submit.prevent="updateCategory">
             <div class="form__group" :class="errors.name ? 'has__danger' : ''">
                 <label for="name" class="font--bold">Category Name</label>
                 <input id="name" type="text" class="form__item" name="name" v-model="form.name">
@@ -30,7 +30,8 @@
 
                 <div class="form__group" :class="errors.content ? 'has__danger' : ''">
                     <label for="slug" class="font--bold">Category Content</label>
-                    <textarea name="content" id="content"  class="form__item" rows="10" v-model="form.content"></textarea>
+                    <!-- <textarea name="content" id="content"  class="form__item" rows="10" v-model="form.content"></textarea> -->
+                    <code-editor :data="form.content" v-model="form.content"></code-editor>
                     <div class="form__helper" v-if="errors.content">
                         {{ errors.content[0] }}
                     </div>
@@ -57,6 +58,8 @@
 </template>
 
 <script>
+    import CodeEditor from '../widgets/CodeEditor'
+    import hotkeys from 'hotkeys-js'
     import toastr from "toastr"
     toastr.options.progressBar = false
     toastr.options.timeOut = 30
@@ -64,7 +67,7 @@
     export default {
         name: "CategoryEdit",
         components: {
-
+            CodeEditor
         },
         props: [
             "category"
@@ -127,10 +130,16 @@
             },
             showMore() {
                 this.show = !this.show
+            },
+            saveFile() {
+                hotkeys('ctrl+s',  (event, handler) => {
+                    event.preventDefault()
+                    this.updateCategory()
+                })
             }
         },
-        created() {
-
+        mounted() {
+            this.saveFile()
         }
 
     }

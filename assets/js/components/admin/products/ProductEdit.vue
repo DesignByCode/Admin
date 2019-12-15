@@ -1,7 +1,7 @@
 <template>
     <div>
         <form @submit.prevent="updateProduct">
-
+            
             <div v-if="categories" class="form__group" :class="errors.category_id ? 'has__danger' : ''">
                 <label for="category" class="form__label font--bold">Category</label>
                 <select name="category_id" id="category" class="form__item" v-model="form.category_id">
@@ -46,6 +46,7 @@
                 <div class="md-col-4">
                     <div class="form__group" :class="errors.sales_price ? 'has__danger' : ''">
                         <label for="sales_price" class="form__label font--bold">Sales Price</label>
+
                         <input id="sales_price" type="number" class="form__item" name="sales_price" v-model="form.sales_price">
                         <div class="form__helper" v-if="errors.sales_price">
                             {{ errors.sales_price[0] }}
@@ -77,14 +78,12 @@
                         </select>
                     </div>
                 </div>
-                <div class="md-col-6">
-
-                </div>
             </div>
 
             <div class="form__group" :class="errors.excerpt ? 'has__danger' : ''">
                 <label for="excerpt" class="form__label font--bold">Body Excerpt</label>
-                <textarea name="excerpt" id="excerpt" class="form__item" cols="30" rows="5" v-model="form.excerpt"></textarea>
+                      <!-- <textarea name="excerpt" id="excerpt" class="form__item" cols="30" rows="5" v-model="form.excerpt"></textarea> -->
+                <code-editor :data="form.excerpt" v-model="form.excerpt"></code-editor>
                 <div class="form__helper" v-if="errors.excerpt">
                     {{ errors.excerpt[0] }}
                 </div>
@@ -92,29 +91,42 @@
 
             <div class="form__group" :class="errors.content ? 'has__danger' : ''">
                 <label for="content" class="form__label font--bold">Body Content</label>
-                <textarea name="content" ref="content" id="content" class="form__item" cols="30" rows="10" v-model="form.content"></textarea>
+                <!-- <textarea name="content" ref="content" id="content" class="form__item" cols="30" rows="10" v-model="form.content"></textarea> -->
+                <code-editor :data="form.content" v-model="form.content"></code-editor>
                 <div class="form__helper" v-if="errors.content">
                     {{ errors.content[0] }}
                 </div>
             </div>
+
             
             <blockquote class="blockquote blockquote--primary">
-                <header class="blockquote__header background--primary-light">
+                <header class="blockquote__header">
                     This section is for posting add and notifacations
                 </header>
                 <aside class="blockquote__body">
-                    <br>
                     The section will not reflect on the website. This is to post live notifacations
                 </aside>
+                <footer class="blockquote__footer background--primary-light">
+                    <template v-if="!more">
+                        <button @click.prevent="showMore" class="btn btn--default">Show More</button>
+                    </template>
+                    <template v-else>
+                        <button @click.prevent="showMore" :disabled="form.ad_text !== ''" class="btn btn--default">Show Less</button>
+                    </template>
+                </footer>
             </blockquote>
+            <template v-if="more">
+                <div class="form__group" :class="errors.ad_text ? 'has__danger' : ''">
+                    <label for="ad_text" class="form__label font--bold">Text for ads</label>
+                    <!-- <textarea name="ad_text" id="ad_text" class="form__item" cols="30" rows="5" v-model="form.ad_text"></textarea> -->
+                    <code-editor :data="form.ad_text" v-model="form.ad_text"></code-editor>
 
-            <div class="form__group" :class="errors.ad_text ? 'has__danger' : ''">
-                <label for="ad_text" class="form__label font--bold">Text for ads</label>
-                <textarea name="ad_text" id="ad_text" class="form__item" cols="30" rows="5" v-model="form.ad_text"></textarea>
-                <div class="form__helper" v-if="errors.ad_text">
-                    {{ errors.ad_text[0] }}
+                    <div class="form__helper" v-if="errors.ad_text">
+                        {{ errors.ad_text[0] }}
+                    </div>
                 </div>
-            </div>
+             
+            </template>
 
             <div class="form__group">
                 <button class="btn btn--primary-gradient">Update Product <span v-if="processing" class="mini-loader"></span></button>
@@ -123,6 +135,8 @@
     </div>
 </template>
 <script>
+    import CodeEditor from '../widgets/CodeEditor'
+    import hotkeys from 'hotkeys-js'
     import toastr from "toastr"
     toastr.options.progressBar = false
     toastr.options.timeOut = 30
@@ -130,7 +144,7 @@
     export default {
         name: "ProductEdit",
         components: {
-
+            CodeEditor
         },
         props: [
             "product"
@@ -142,11 +156,15 @@
                 processing: false,
                 form: this.product,
                 data: null,
+                show: false,
             }
         },
         computed: {
-            price() {
-                // return this.form.price.toFixed(2)
+            more () {
+                if(this.form.ad_text && !this.show) {
+                    return !this.show
+                }
+                return this.show
             }
         },
         methods: {
@@ -173,11 +191,30 @@
                     this.processing = false
                     toastr.error('Error!')
                 })
+            },
+            price(p) {
+                var price = parseFloat(p).toFixed(2)
+                if (isNaN(price)) {
+                    return 0
+                }
+                return price
+            },
+            showMore() {
+                this.show = !this.show
+            },
+            saveFile() {
+                hotkeys('ctrl+s', (event, handler) => {
+                    event.preventDefault()
+                    this.updateProduct()
+                })
             }
         },
         created() {
             this.getCategories()
             this.getProduct(this.product.id)
+        },
+        mounted() {
+            this.saveFile()
         }
 
     }

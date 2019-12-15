@@ -41,26 +41,26 @@ class AdminServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/../config/admin.php' => config_path('admin.php')
-        ], 'Admin Config');
+        ], 'DesignByCode Admin Config');
 
         $this->publishes([
             __DIR__.'/../../database/migrations' => database_path('migrations'),
-        ], 'Admin Migration');
+        ], 'DesignByCode Admin Migration');
 
         $this->publishes([
             __DIR__.'/../../database/seeds' => database_path('seeds')
-        ], 'Admin Seeds');
+        ], 'DesignByCode Admin Seeds');
 
 
         $this->publishes([
             __DIR__.'/../../env/.env.admin.example' => base_path('.env.admin.example')
-        ], 'Admin Env');
+        ], 'DesignByCode Admin Env');
 
         $this->publishes([
             __DIR__.'/../../assetsPublic/public/css/admin.css' => public_path('css/admin.css'),
             __DIR__.'/../../assetsPublic/public/js/admin.js' => public_path('js/admin.js'),
             __DIR__.'/../../assetsPublic/public/fonts' => public_path('fonts'),
-        ], 'Admin Assets');
+        ], 'DesignByCode Admin Assets');
 
 
         Category::creating(function($query) {
