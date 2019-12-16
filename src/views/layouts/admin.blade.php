@@ -30,30 +30,30 @@
 
 
                     <li class="menu__item">
-                        <a class="menu__link" data-submenu="submenu-1" href="{{ route('admin.index') }}"><span><i class="lunacon lunacon-dashboard"></i></span> Dashboard</a>
+                        <a class="menu__link {{ set_active('admin', 'active') }}" data-submenu="submenu-1" href="{{ route('admin.index') }}"><span><i class="lunacon lunacon-dashboard"></i></span> Dashboard</a>
                     </li>
                     @role('super-admin')
                     <li class="menu__item">
-                        <a class="menu__link" data-submenu="submenu-5" href="{{ route('admin.users.index') }}"><span><i class="lunacon lunacon-users-solid"></i></span> Users</a>
+                        <a class="menu__link {{ set_active('admin/users*', 'active') }}" data-submenu="submenu-5" href="{{ route('admin.users.index') }}"><span><i class="lunacon lunacon-users-solid"></i></span> Users</a>
                     </li>
                     <li class="menu__devider"></li>
 
                     <li class="menu__item">
-                        <a class="menu__link" data-submenu="submenu-2" href="{{ route('admin.categories.index') }}"><span><i class="lunacon lunacon-document"></i></span>  Categories</a>
+                        <a class="menu__link {{ set_active('admin/categories*', 'active') }}" data-submenu="submenu-2" href="{{ route('admin.categories.index') }}"><span><i class="lunacon lunacon-document"></i></span>  Categories</a>
                     </li>
                     <li class="menu__item">
-                        <a class="menu__link" data-submenu="submenu-4" href="{{ route('admin.products.index') }}"><span><i class="lunacon lunacon-box-opened"></i></span> Products</a>
+                        <a class="menu__link{{ set_active('admin/products*', 'active') }}" data-submenu="submenu-4" href="{{ route('admin.products.index') }}"><span><i class="lunacon lunacon-box-opened"></i></span> Products</a>
                     </li>
                     <li class="menu__item">
-                        <a class="menu__link" data-submenu="submenu-6" href="{{ route('admin.tags.index') }}"><span><i class="lunacon lunacon-tags"></i></span> Tags</a>
+                        <a class="menu__link {{ set_active('admin/tags*', 'active') }}" data-submenu="submenu-6" href="{{ route('admin.tags.index') }}"><span><i class="lunacon lunacon-tags"></i></span> Tags</a>
                     </li>
                     <li class="menu__devider"></li>
                     <li class="menu__item">
-                        <a class="menu__link" data-submenu="submenu-3" href="{{ route('admin.galleries.index') }}"><span><i class="lunacon lunacon-camera"></i></span> Galleries</a>
+                        <a class="menu__link {{ set_active('admin/galleries*', 'active') }}" data-submenu="submenu-3" href="{{ route('admin.galleries.index') }}"><span><i class="lunacon lunacon-camera"></i></span> Galleries</a>
                     </li>
 
                     <li class="menu__item">
-                        <a class="menu__link" data-submenu="submenu-7" href="{{ route('admin.notifacation.index') }}"><span><i class="lunacon lunacon-gears"></i></span> Notifacations</a>
+                        <a class="menu__link {{ set_active('admin/notifacation*', 'active') }}" data-submenu="submenu-7" href="{{ route('admin.notifacation.index') }}"><span><i class="lunacon lunacon-gears"></i></span> Notifacations</a>
                     </li>
                     <li class="menu__item">
                         <a class="menu__link" data-submenu="submenu-8" href="#"><span><i class="lunacon lunacon-gears"></i></span> Settings</a>

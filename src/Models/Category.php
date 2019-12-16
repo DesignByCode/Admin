@@ -6,16 +6,16 @@ use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\Models\Media;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
+use DesignByCode\Sluggable\Traits\Sluggable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 class Category extends Model implements HasMedia
 {
 
-    use HasMediaTrait, SoftDeletes;
+    use HasMediaTrait, Sluggable, SoftDeletes;
 
     protected $fillable = ['name', 'slug', 'description', 'content'];
-
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -25,7 +25,23 @@ class Category extends Model implements HasMedia
         return $this->hasMany(Product::class);
     }
 
+    /**
+     * [product description]
+     * @return [type] [description]
+     */
+    public function image($type = '')
+    {
+        return config('app.url') . $this->getFirstMediaUrl('product', $type);
+    }
 
+    /**
+     * [product description]
+     * @return [type] [description]
+     */
+    public function images($type = '')
+    {
+        return config('app.url') . $this->getMedia('product', $type);
+    }
 
 
     /**

@@ -6,16 +6,34 @@ use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\Models\Media;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
+use DesignByCode\Sluggable\Traits\Sluggable;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 class Gallery extends Model implements HasMedia
 {
-    use HasMediaTrait;
+    use HasMediaTrait, Sluggable;
 
 
     protected $fillable = ['name'];
 
 
+    /**
+     * [gallery description]
+     * @return [type] [description]
+     */
+    public function image($type = '')
+    {
+        return config('app.url') . $this->getFirstMediaUrl('gallery', $type);
+    }
+
+    /**
+     * [gallery description]
+     * @return [type] [description]
+     */
+    public function images($type = '')
+    {
+        return config('app.url') . $this->getMedia('gallery', $type);
+    }
 
     /**
      *

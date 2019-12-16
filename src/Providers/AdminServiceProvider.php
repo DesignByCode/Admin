@@ -65,57 +65,52 @@ class AdminServiceProvider extends ServiceProvider
 
         Category::creating(function($query) {
            $query->name = Str::title($query->name);
-           $query->slug = Str::slug($query->name);
         });
 
         Category::updating(function($query) {
            $query->name = Str::title($query->name);
-           $query->slug = Str::slug($query->name);
         });
 
         Product::creating(function($query) {
            $query->name = Str::title($query->name);
-           $query->slug = Str::slug($query->name);
         });
 
         Product::updating(function($query) {
            $query->name = Str::title($query->name);
-           $query->slug = Str::slug($query->name);
         });
 
         Gallery::creating(function($query) {
            $query->name = Str::title($query->name);
-           $query->slug = Str::slug($query->name);
         });
 
         Gallery::updating(function($query) {
            $query->name = Str::title($query->name);
-           $query->slug = Str::slug($query->name);
         });
 
-        Route::bind('products', function ($value) {
-            return Product::where('slug', $value)->orWhere(function ($query) use ($value) {
-                if (is_numeric($value)) {
-                    $query->where('id', $value);
-                }
-            })->firstOrFail();
-        });
+        // Route::bind('products', function ($value) {
+    
+        //     return Product::where('slug', $value)->orWhere(function ($query) use ($value) {
+        //         if (is_numeric($value)) {
+        //             $query->where('id', $value);
+        //         }
+        //     })->firstOrFail();
+        // });
 
-        Route::bind('categories', function ($value) {
-            return Category::where('slug', $value)->orWhere(function ($query) use ($value) {
-                if (is_numeric($value)) {
-                    $query->where('id', $value);
-                }
-            })->firstOrFail();
-        });
+        // Route::bind('categories', function ($value) {
+        //     return Category::where('slug', $value)->orWhere(function ($query) use ($value) {
+        //         if (is_numeric($value)) {
+        //             $query->where('id', $value);
+        //         }
+        //     })->firstOrFail();
+        // });
 
-        Route::bind('galleries', function ($value) {
-            return Gallery::where('slug', $value)->orWhere(function ($query) use ($value) {
-                if (is_numeric($value)) {
-                    $query->where('id', $value);
-                }
-            })->firstOrFail();
-        });
+        // Route::bind('galleries', function ($value) {
+        //     return Gallery::where('slug', $value)->orWhere(function ($query) use ($value) {
+        //         if (is_numeric($value)) {
+        //             $query->where('id', $value);
+        //         }
+        //     })->firstOrFail();
+        // });
 
     }
 }

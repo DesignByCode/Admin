@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use DesignByCode\Admin\Traits\LiveAware;
 use CyrildeWit\EloquentViewable\Viewable;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
+use DesignByCode\Sluggable\Traits\Sluggable;
 use DesignByCode\Tagger\Models\TaggableTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
@@ -16,7 +17,7 @@ use CyrildeWit\EloquentViewable\Contracts\Viewable as ViewableContract;
 
 class Product extends Model implements HasMedia, ViewableContract
 {
-    use HasMediaTrait, TaggableTrait, Viewable, LiveAware, SoftDeletes;
+    use HasMediaTrait, TaggableTrait, Viewable, LiveAware, Sluggable, SoftDeletes;
 
     protected $fillable = [
         'name',
@@ -40,13 +41,23 @@ class Product extends Model implements HasMedia, ViewableContract
         'sale_end' => 'date:Y-m-d'
     ];
 
+
     /**
      * [images description]
      * @return [type] [description]
      */
-    public function images()
+    public function image($type = '')
     {
-        return $this->hasMany(Media::class, 'id', 'product_id');
+        return config('app.url') . $this->getFirstMediaUrl('product', $type);
+    }
+
+    /**
+     * [images description]
+     * @return [type] [description]
+     */
+    public function images($type = '')
+    {
+        return config('app.url') . $this->getMedia('product', $type);
     }
 
     /**
@@ -93,11 +104,6 @@ class Product extends Model implements HasMedia, ViewableContract
             return trim(substr($ex, 0, 120)) . '...';
         }
         return '';
-    }
-
-    public function test()
-    {
-        dd(config('admin.img.thumbnail.width'));
     }
 
 

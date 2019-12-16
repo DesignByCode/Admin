@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "744ee59383362a6ca2b699c13b789ca7",
+    "content-hash": "b9d5d3b483237142548bd13b434a230a",
     "packages": [
         {
             "name": "berkayk/onesignal-laravel",
@@ -144,6 +144,118 @@
                 "visits"
             ],
             "time": "2019-10-18T13:07:30+00:00"
+        },
+        {
+            "name": "designbycode/laravel-helpers",
+            "version": "v1.0.0-rc.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DesignByCode/laravel-helpers.git",
+                "reference": "67fabb21b70a4c33b9e74d330862014130ca4e1a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DesignByCode/laravel-helpers/zipball/67fabb21b70a4c33b9e74d330862014130ca4e1a",
+                "reference": "67fabb21b70a4c33b9e74d330862014130ca4e1a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.8|^6.0",
+                "php": "^7.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": [],
+                "laravel": {
+                    "providers": [
+                        "DesignByCode\\Helpers\\Providers\\HelpersServiceProvider"
+                    ],
+                    "aliases": {
+                        "Set": "DesignByCode\\Helpers\\Facades\\Set"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DesignByCode\\Helpers\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Claude Myburgh",
+                    "email": "claude@deisgnbycode.co.za"
+                }
+            ],
+            "description": "Simple laravel helper utilities",
+            "keywords": [
+                "active class",
+                "body class",
+                "laravel-helper",
+                "menu active",
+                "set classes"
+            ],
+            "time": "2019-11-10T23:08:14+00:00"
+        },
+        {
+            "name": "designbycode/sluggable",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DesignByCode/sluggable.git",
+                "reference": "41dfd457035f44451160c4b70de8b6f379e3259e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DesignByCode/sluggable/zipball/41dfd457035f44451160c4b70de8b6f379e3259e",
+                "reference": "41dfd457035f44451160c4b70de8b6f379e3259e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": [],
+                "laravel": {
+                    "providers": [
+                        "DesignByCode\\Sluggable\\Providers\\SluggableServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DesignByCode\\Sluggable\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Claude Myburgh",
+                    "email": "claude@deisgnbycode.co.za"
+                }
+            ],
+            "description": "Laravel sluggable trait",
+            "keywords": [
+                "laravel",
+                "slug",
+                "sluggable",
+                "trait"
+            ],
+            "time": "2019-12-15T23:41:40+00:00"
         },
         {
             "name": "designbycode/tagger",
@@ -4260,12 +4372,14 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
-    "prefer-stable": false,
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "designbycode/sluggable": 20
+    },
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.2"
+        "php": "^7.1.3"
     },
     "platform-dev": []
 }

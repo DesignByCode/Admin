@@ -1,5 +1,5 @@
 # Admin panel for laravel application
 
 ```php
-$ composer require designbycode/admin
+$ composer require designbycode/sluggable
 ```

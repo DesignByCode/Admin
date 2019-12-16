@@ -18,6 +18,7 @@ trait LiveAware
         return $builder->where('live', true);
     }
 
+
     /**
      * [isLive description]
      * @return boolean [description]
