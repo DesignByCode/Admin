@@ -8,13 +8,21 @@ return [
         'password' => env('ADMIN_USER_PASSWORD'),
     ],
     'img' => [
+        'icon' => [
+            'width' => 50,
+            'height' => 50
+        ],
         'thumbnail' => [
             'width' => 200,
-            'heihgt' => 200
+            'height' => 200
         ],
         'card' => [
             'width' => 800,
             'height' => 600
+        ],
+        'wide' => [
+            'width' => 1024,
+            'height' => 768
         ]
     ]
 

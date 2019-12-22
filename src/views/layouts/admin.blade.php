@@ -52,12 +52,12 @@
                         <a class="menu__link {{ set_active('admin/galleries*', 'active') }}" data-submenu="submenu-3" href="{{ route('admin.galleries.index') }}"><span><i class="lunacon lunacon-camera"></i></span> Galleries</a>
                     </li>
 
-                    <li class="menu__item">
+{{--                     <li class="menu__item">
                         <a class="menu__link {{ set_active('admin/notifacation*', 'active') }}" data-submenu="submenu-7" href="{{ route('admin.notifacation.index') }}"><span><i class="lunacon lunacon-gears"></i></span> Notifacations</a>
                     </li>
                     <li class="menu__item">
                         <a class="menu__link" data-submenu="submenu-8" href="#"><span><i class="lunacon lunacon-gears"></i></span> Settings</a>
-                    </li>
+                    </li> --}}
                     @endrole
 
                 </ul>

@@ -48,7 +48,7 @@ class Product extends Model implements HasMedia, ViewableContract
      */
     public function image($type = '')
     {
-        return config('app.url') . $this->getFirstMediaUrl('product', $type);
+        return $this->getFirstMediaUrl('product', $type);
     }
 
     /**
@@ -57,7 +57,7 @@ class Product extends Model implements HasMedia, ViewableContract
      */
     public function images($type = '')
     {
-        return config('app.url') . $this->getMedia('product', $type);
+        return $this->getMedia('product', $type);
     }
 
     /**
@@ -114,17 +114,13 @@ class Product extends Model implements HasMedia, ViewableContract
     {
         $this->addMediaCollection('product')
             ->registerMediaConversions(function (Media $media) {
-                $this->addMediaConversion('card')
-                    ->crop(Manipulations::CROP_CENTER,(int) config('admin.img.card.width'),(int) config('admin.img.card.height'))
-                    ->optimize()
-                    ->width((int)config('admin.img.card.width'))
-                    ->height((int)config('admin.img.card.height'));
-
-                $this->addMediaConversion('thumb')
-                    ->crop(Manipulations::CROP_CENTER,(int) config('admin.img.thumbnail.width'),(int) config('admin.img.thumbnail.height'))
-                    ->optimize()
-                    ->width((int)config('admin.img.thumbnail.width'))
-                    ->height((int)config('admin.img.thumbnail.height'));
+                foreach (config('admin.img') as $key => $value) {
+                    $this->addMediaConversion($key)
+                        ->crop(Manipulations::CROP_CENTER,(int) $value['width'],(int) $value['height'])
+                        ->optimize()
+                        ->width((int) $value['width'])
+                        ->height((int)$value['height']);
+                }
             });
     }
 

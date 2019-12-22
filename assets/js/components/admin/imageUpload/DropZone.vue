@@ -37,7 +37,7 @@
                         dropzone.emit('addedfile', mock);
                         var file = element.file_name
                         // dropzone.emit('thumbnail', mock, `${appurl}/storage/${element.id}/conversions/${file.replace(/(\.[\w\d_-]+)$/i, '-thumb$1')}`);
-                        dropzone.emit('thumbnail', mock, `${appurl}/storage/${element.id}/conversions/${file.replace(/(\.[\w\d_-]+)/, '-thumb.jpg')}`);
+                        dropzone.emit('thumbnail', mock, `/storage/${element.id}/conversions/${file.replace(/(\.[\w\d_-]+)/, '-thumbnail.jpg')}`);
                     })
                 }
 

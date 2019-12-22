@@ -17,6 +17,12 @@ class Category extends Model implements HasMedia
 
     protected $fillable = ['name', 'slug', 'description', 'content'];
 
+
+    // public function getRouteKeyName()
+    // {
+    //     return 'slug';
+    // }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -31,7 +37,7 @@ class Category extends Model implements HasMedia
      */
     public function image($type = '')
     {
-        return config('app.url') . $this->getFirstMediaUrl('product', $type);
+        return  $this->getFirstMediaUrl('category', $type);
     }
 
     /**
@@ -40,7 +46,7 @@ class Category extends Model implements HasMedia
      */
     public function images($type = '')
     {
-        return config('app.url') . $this->getMedia('product', $type);
+        return  $this->getMedia('category', $type);
     }
 
 
@@ -51,17 +57,13 @@ class Category extends Model implements HasMedia
     {
         $this->addMediaCollection('category')
             ->registerMediaConversions(function (Media $media) {
-                $this->addMediaConversion('card')
-                    ->crop(Manipulations::CROP_CENTER,(int) config('admin.img.card.width'),(int) config('admin.img.card.height'))
-                    ->optimize()
-                    ->width((int)config('admin.img.card.width'))
-                    ->height((int)config('admin.img.card.height'));
-
-                $this->addMediaConversion('thumb')
-                    ->crop(Manipulations::CROP_CENTER,(int) config('admin.img.thumbnail.width'),(int) config('admin.img.thumbnail.height'))
-                    ->optimize()
-                    ->width((int)config('admin.img.thumbnail.width'))
-                    ->height((int)config('admin.img.thumbnail.height'));
+                foreach (config('admin.img') as $key => $value) {
+                    $this->addMediaConversion($key)
+                        ->crop(Manipulations::CROP_CENTER,(int) $value['width'],(int) $value['height'])
+                        ->optimize()
+                        ->width((int) $value['width'])
+                        ->height((int)$value['height']);
+                }
             });
     }
 

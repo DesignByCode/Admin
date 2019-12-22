@@ -81,7 +81,7 @@
             </div>
 
             <div class="form__group" :class="errors.excerpt ? 'has__danger' : ''">
-                <label for="excerpt" class="form__label font--bold">Body Excerpt</label>
+                <label for="excerpt" class="form__label font--bold">Excerpt</label>
                       <!-- <textarea name="excerpt" id="excerpt" class="form__item" cols="30" rows="5" v-model="form.excerpt"></textarea> -->
                 <code-editor :data="form.excerpt" v-model="form.excerpt"></code-editor>
                 <div class="form__helper" v-if="errors.excerpt">

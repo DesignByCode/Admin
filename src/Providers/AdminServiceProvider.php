@@ -18,7 +18,9 @@ class AdminServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if($this->app['config']->get('admin') === null) {
+           $this->app['config']->set('admin', require __DIR__ . '/../config/admin.php');
+        }
     }
 
     /**
@@ -33,9 +35,11 @@ class AdminServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
 
         //Load web routes
-        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
-        $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
-
+        //
+        if (! $this->app->routesAreCached()) {
+            $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+            $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
+        }
         //Load Views
         $this->loadViewsFrom(__DIR__ . '/../views', 'admin');
 
