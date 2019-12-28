@@ -22,6 +22,8 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 
 window.bus = new Vue();
 
+// window.dt = require('datatables.net')()
+
 const app = new Vue({
     el: '#app'
 });
@@ -33,5 +35,13 @@ const luna =  require('luna-sass/Framework/js/luna.js');
     'use strict';
 
     $(document).Luna();
+
+    $('.table-container tr').on('click', function () {
+        $('#' + $(this).data('display')).toggle();
+    });
+
+    $('#delete-log, #clean-log, #delete-all-log').click(function () {
+        return confirm('Are you sure?');
+    });
 
 })(jQuery, window, document);

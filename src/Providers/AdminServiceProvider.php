@@ -91,30 +91,29 @@ class AdminServiceProvider extends ServiceProvider
            $query->name = Str::title($query->name);
         });
 
-        // Route::bind('products', function ($value) {
-    
-        //     return Product::where('slug', $value)->orWhere(function ($query) use ($value) {
-        //         if (is_numeric($value)) {
-        //             $query->where('id', $value);
-        //         }
-        //     })->firstOrFail();
-        // });
+        Route::bind('product', function ($value) {
+            return Product::where('slug', $value)->orWhere(function ($query) use ($value) {
+                if (is_numeric($value)) {
+                    $query->where('id', $value);
+                }
+            })->firstOrFail();
+        });
 
-        // Route::bind('categories', function ($value) {
-        //     return Category::where('slug', $value)->orWhere(function ($query) use ($value) {
-        //         if (is_numeric($value)) {
-        //             $query->where('id', $value);
-        //         }
-        //     })->firstOrFail();
-        // });
+     Route::bind('category', function ($value) {
+         return Category::where('slug', $value)->orWhere(function ($query) use ($value) {
+             if (is_numeric($value)) {
+                 $query->where('id', $value);
+             }
+         })->firstOrFail();
+     });
 
-        // Route::bind('galleries', function ($value) {
-        //     return Gallery::where('slug', $value)->orWhere(function ($query) use ($value) {
-        //         if (is_numeric($value)) {
-        //             $query->where('id', $value);
-        //         }
-        //     })->firstOrFail();
-        // });
+     Route::bind('gallery', function ($value) {
+         return Gallery::where('slug', $value)->orWhere(function ($query) use ($value) {
+             if (is_numeric($value)) {
+                 $query->where('id', $value);
+             }
+         })->firstOrFail();
+         });
 
     }
 }

@@ -43,7 +43,10 @@ Route::group(
     /**
      * Notifacations
      */
-    
-    Route::get('notifacation', 'NotifacationsController@index')->name('notifacation.index');
+//    Route::get('notifacation', 'NotifacationsController@index')->name('notifacation.index');
+
+
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('logs.index');
+
 });
 

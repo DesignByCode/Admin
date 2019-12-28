@@ -17,7 +17,7 @@ class CounterModelsController extends Controller
      */
     public function users()
     {
-        return User::admins()->count();
+        return User::clients()->count();
     }
 
     /**

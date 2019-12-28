@@ -57,12 +57,12 @@ class ChartsController extends Controller
         return $this->dataLoop($users);
     }
 
-    public function single_products_count($id)
+    public function single_products_count(Product $product)
     {
         $day1 = Carbon::parse('now')->subDays(30)->startOfDay();
         $day2 = Carbon::parse('now')->endOfDay();
 
-        $product = Product::find($id)->views()
+        $product = $product->views()
             ->select($this->querySelect('viewed_at'))
             ->whereBetween('viewed_at', [$day1, $day2])
             ->orderBy('date', 'asc')

@@ -14,9 +14,12 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/admin.js') }}" defer></script>
+    @yield('scripts')
 
     <!-- Styles -->
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+
+    @yield('styles')
 </head>
 <body>
 <div id="app">
@@ -44,6 +47,7 @@
                     <li class="menu__item">
                         <a class="menu__link{{ set_active('admin/products*', 'active') }}" data-submenu="submenu-4" href="{{ route('admin.products.index') }}"><span><i class="lunacon lunacon-box-opened"></i></span> Products</a>
                     </li>
+
                     <li class="menu__item">
                         <a class="menu__link {{ set_active('admin/tags*', 'active') }}" data-submenu="submenu-6" href="{{ route('admin.tags.index') }}"><span><i class="lunacon lunacon-tags"></i></span> Tags</a>
                     </li>
@@ -51,7 +55,10 @@
                     <li class="menu__item">
                         <a class="menu__link {{ set_active('admin/galleries*', 'active') }}" data-submenu="submenu-3" href="{{ route('admin.galleries.index') }}"><span><i class="lunacon lunacon-camera"></i></span> Galleries</a>
                     </li>
-
+                    <li class="menu__devider"></li>
+                    <li class="menu__item">
+                        <a class="menu__link{{ set_active('admin/log*', 'active') }}" data-submenu="submenu-4" href="{{ route('admin.logs.index') }}"><span><i class="lunacon lunacon-files"></i></span> Logs</a>
+                    </li>
 {{--                     <li class="menu__item">
                         <a class="menu__link {{ set_active('admin/notifacation*', 'active') }}" data-submenu="submenu-7" href="{{ route('admin.notifacation.index') }}"><span><i class="lunacon lunacon-gears"></i></span> Notifacations</a>
                     </li>
@@ -69,7 +76,7 @@
     </div>
 </div><!-- #app -->
 
-{{--@yield('scripts')--}}
+
 </body>
 </html>
 

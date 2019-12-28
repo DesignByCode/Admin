@@ -44,9 +44,10 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        $product = Product::with('tags', 'media')->findOrFail($id);
+        $product = $product->load('tags', 'media');
+            
         return new ProductResource($product);
     }
 

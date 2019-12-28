@@ -20,6 +20,10 @@ return [
             'width' => 800,
             'height' => 600
         ],
+        'tall' => [
+            'width' => 300,
+            'height' => 550
+        ],
         'wide' => [
             'width' => 1024,
             'height' => 768

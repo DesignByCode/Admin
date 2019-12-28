@@ -1,5 +1,5 @@
 <template>
-	<div class="panel panel--default">
+	<div class="panel panel--default markdown__panel">
 		<div class="panel__header background--primary-light"><h3>Markdown View</h3></div>
 		<div class="panel__body" v-html="markdown"></div>
 	</div>
