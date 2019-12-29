@@ -17,6 +17,11 @@ class Gallery extends Model implements HasMedia
     protected $fillable = ['name'];
 
 
+    public function getRouteKeyName()
+    {
+        return in_array(request()->segment(1), ['admin', 'api', 'datatables']) ? 'id' : 'slug';
+    }
+
     /**
      * [gallery description]
      * @return [type] [description]

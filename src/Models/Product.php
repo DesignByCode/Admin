@@ -41,10 +41,10 @@ class Product extends Model implements HasMedia, ViewableContract
         'sale_end' => 'date:Y-m-d'
     ];
 
-    // public function getRouteKeyName()
-    // {
-    //     return 'slug';
-    // }
+    public function getRouteKeyName()
+    {
+        return in_array(request()->segment(1), ['admin', 'api', 'datatables']) ? 'id' : 'slug';
+    }
 
     // protected $withCount = ['views'];
 

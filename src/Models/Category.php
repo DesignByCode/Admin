@@ -18,10 +18,10 @@ class Category extends Model implements HasMedia
     protected $fillable = ['name', 'slug', 'description', 'content'];
 
 
-    // public function getRouteKeyName()
-    // {
-    //     return 'slug';
-    // }
+    public function getRouteKeyName()
+    {
+        return in_array(request()->segment(1), ['admin', 'api', 'datatables']) ? 'id' : 'slug';
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
