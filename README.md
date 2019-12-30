@@ -1,7 +1,19 @@
 # Admin panel for laravel application
 
 ```php
-$ composer require designbycode/sluggable
+$ composer require designbycode/admin
+```
+
+## change config auth.php 
+
+
+```php
+//Change 
+    'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => DesignByCode\Admin\Models\User::class,
+        ],
 ```
 
 vendor publish all packages

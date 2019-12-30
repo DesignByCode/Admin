@@ -3,10 +3,11 @@
 namespace DesignByCode\Admin\Http\Controllers\Api\Admin;
 
 
-use App\User;
+
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use DesignByCode\Admin\Models\User;
 use App\Http\Controllers\Controller;
 use DesignByCode\Admin\Models\Product;
 use DesignByCode\Admin\Models\Category;

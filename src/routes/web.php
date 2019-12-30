@@ -50,3 +50,8 @@ Route::group(
 
 });
 
+
+Route::group(['middleware' => ['web'] ,'namespace' => 'DesignByCode\Admin\Http\Controllers\Auth'], function() {
+    Route::get('login/{service}', 'SocialLoginController@redirect')->name('login.service');
+    Route::get('login/{service}/callback', 'SocialLoginController@callback')->name('login.service.callback');
+});

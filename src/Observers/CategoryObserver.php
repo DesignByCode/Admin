@@ -12,25 +12,23 @@ class CategoryObserver
     /**
      * Handle the category "creating" event.
      *
-     * @param  \App\Category  $category
+     * @param  DesignByCode\Admin\Models\Category  $category
      * @return void
      */
     public function creating(Category $category)
     {
-        $category->name = Str::title($category->title);
-        $category->slug = Str::slug($category->title);
+        $category->name = Str::title($category->name);
     }
 
     /**
      * Handle the category "updating" event.
      *
-     * @param  \App\Category  $category
+     * @param  DesignByCode\Admin\Models\Category  $category
      * @return void
      */
     public function updating(Category $category)
     {
-        $category->name = Str::title($category->title);
-        $category->slug = Str::slug($category->title);
+        $category->name = Str::title($category->name);
     }
 
 }

@@ -4,10 +4,11 @@ namespace DesignByCode\Admin\Providers;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Route;
-use DesignByCode\Admin\Models\Gallery;
-use DesignByCode\Admin\Models\Product;
-use DesignByCode\Admin\Models\Category;
 use Illuminate\Support\ServiceProvider;
+use DesignByCode\Admin\Models\UserSocial;
+use DesignByCode\Admin\Models\{Gallery, Product, Category};
+use DesignByCode\Admin\Observers\{GalleryObserver, ProductObserver, CategoryObserver, UserSocialObservers};
+use DesignByCode\Admin\Providers\AdminMiddlewareServiceProvider;
 
 class AdminServiceProvider extends ServiceProvider
 {
@@ -21,6 +22,18 @@ class AdminServiceProvider extends ServiceProvider
         if($this->app['config']->get('admin') === null) {
            $this->app['config']->set('admin', require __DIR__ . '/../config/admin.php');
         }
+
+        if($this->app['config']->get('social') === null) {
+           $this->app['config']->set('social', require __DIR__ . '/../config/social.php');
+        }
+
+        $this->app->register(AdminMiddlewareServiceProvider::class);
+
+        $this->app->register(AdminSocialServiceProvider::class);
+        
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/services.php', 'services'
+        );
     }
 
     /**
@@ -66,30 +79,13 @@ class AdminServiceProvider extends ServiceProvider
             __DIR__.'/../../assetsPublic/public/fonts' => public_path('fonts'),
         ], 'DesignByCode Admin Assets');
 
+        UserSocial::observe(UserSocialObservers::class);
 
-        Category::creating(function($query) {
-           $query->name = Str::title($query->name);
-        });
+        Category::observe(CategoryObserver::class);
 
-        Category::updating(function($query) {
-           $query->name = Str::title($query->name);
-        });
+        Product::observe(ProductObserver::class);
 
-        Product::creating(function($query) {
-           $query->name = Str::title($query->name);
-        });
-
-        Product::updating(function($query) {
-           $query->name = Str::title($query->name);
-        });
-
-        Gallery::creating(function($query) {
-           $query->name = Str::title($query->name);
-        });
-
-        Gallery::updating(function($query) {
-           $query->name = Str::title($query->name);
-        });
+        Gallery::observe(GalleryObserver::class);
 
     }
 }

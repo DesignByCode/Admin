@@ -13,7 +13,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 class Category extends Model implements HasMedia
 {
 
-    use HasMediaTrait, Sluggable, SoftDeletes;
+    use HasMediaTrait, Sluggable;
 
     protected $fillable = ['name', 'slug', 'description', 'content'];
 

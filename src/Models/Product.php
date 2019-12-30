@@ -17,7 +17,7 @@ use CyrildeWit\EloquentViewable\Contracts\Viewable as ViewableContract;
 
 class Product extends Model implements HasMedia, ViewableContract
 {
-    use HasMediaTrait, TaggableTrait, Viewable, LiveAware, Sluggable, SoftDeletes;
+    use HasMediaTrait, TaggableTrait, Viewable, LiveAware, Sluggable;
 
     protected $fillable = [
         'name',

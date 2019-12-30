@@ -2,8 +2,9 @@
 
 namespace DesignByCode\Admin\Http\Controllers\DataTables;
 
-use App\User;
+
 use Illuminate\Http\Request;
+use DesignByCode\Admin\Models\User;
 
 class UsersController extends DataTableController
 {

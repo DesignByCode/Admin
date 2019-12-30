@@ -2,12 +2,13 @@
 namespace DesignByCode\Admin\Http\Controllers\Api\Admin;
 
 
-use App\Http\Controllers\Controller;
-use App\User;
-use DesignByCode\Admin\Models\Category;
-use DesignByCode\Admin\Models\Product;
-use DesignByCode\Tagger\Models\Tag;
+
 use Illuminate\Http\Request;
+use DesignByCode\Admin\Models\User;
+use DesignByCode\Tagger\Models\Tag;
+use App\Http\Controllers\Controller;
+use DesignByCode\Admin\Models\Product;
+use DesignByCode\Admin\Models\Category;
 
 class CounterModelsController extends Controller
 {

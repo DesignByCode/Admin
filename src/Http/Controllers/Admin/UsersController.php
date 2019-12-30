@@ -2,9 +2,9 @@
 
 namespace DesignByCode\Admin\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\User;
 use Illuminate\Http\Request;
+use DesignByCode\Admin\Models\User;
+use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Permission;
 
 class UsersController extends Controller
