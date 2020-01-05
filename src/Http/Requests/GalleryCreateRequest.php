@@ -24,7 +24,8 @@ class GalleryCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|unique:galleries,name,' . $this->id
+            'name' => 'required|string|unique:galleries,name,' . $this->id,
+            'description' => 'nullable|string'
         ];
     }
 }

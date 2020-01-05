@@ -24,7 +24,9 @@ Route::group(
     Route::post('products/{product}/active', 'ProductsController@updateActive')->name('api.products.activate');
     Route::post('products/{product}/upload', 'ProductsController@upload')->name('api.products.upload');
     Route::delete('products/{product}', 'ProductsController@delete_image')->name('api.products.image.delete');
-
+    Route::get('products/video/{product}', 'ProductVideosController@index')->name('api.product.videos.index');
+    Route::post('products/video/{product}', 'ProductVideosController@store')->name('api.product.videos.create');
+    Route::delete('products/video/{product}', 'ProductVideosController@destroy')->name('api.product.videos.delete');
     Route::get('category-products/{category}', 'CategoryProductsController@index')->name('api.category.product.index');
 
     /**

@@ -2,12 +2,13 @@
 
 namespace DesignByCode\Admin\Http\Controllers\Api\Admin;
 
-use App\Http\Controllers\Controller;
-use DesignByCode\Admin\Http\Requests\GalleryCreateRequest;
-use DesignByCode\Admin\Http\Resources\GalleryCollection;
-use DesignByCode\Admin\Models\Gallery;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Spatie\MediaLibrary\Models\Media;
+use DesignByCode\Admin\Models\Gallery;
+use DesignByCode\Admin\Http\Resources\GalleryResource;
+use DesignByCode\Admin\Http\Resources\GalleryCollection;
+use DesignByCode\Admin\Http\Requests\GalleryCreateRequest;
 
 class GalleriesController extends Controller
 {
@@ -19,6 +20,7 @@ class GalleriesController extends Controller
     public function index()
     {
         $gallery = Gallery::get();
+
         return new GalleryCollection($gallery);
     }
 
@@ -41,19 +43,19 @@ class GalleriesController extends Controller
      */
     public function show(Gallery $gallery)
     {
-        return $gallery;
+        return new GalleryResource($gallery->load('media'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\GalleryCreateRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GalleryCreateRequest $request, Gallery $gallery)
     {
-        //
+        $gallery->update($request->only('name', 'description'));
     }
 
     /**

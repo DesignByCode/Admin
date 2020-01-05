@@ -10,7 +10,7 @@
         <div class="row">
             <div class="md-col-12">
                 <div class="panel panel--default">
-                    <div class="panel__header">{{ __('Gallery Images') }}</div>
+                    <div class="panel__header">{{ __('Gallery Images') }} </div>
                     <div class="panel__body">
                         <drop-zone
                             :object="{{$gallery->getMedia('gallery')}}"
@@ -20,6 +20,12 @@
                         </drop-zone>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="md-col-12">
+                <gallery-edit :gallery="{{ $gallery }}"></gallery-edit>
             </div>
         </div>
 

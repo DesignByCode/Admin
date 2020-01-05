@@ -24,6 +24,8 @@ window.bus = new Vue();
 
 // window.dt = require('datatables.net')()
 
+// require('textarea')
+
 const app = new Vue({
     el: '#app'
 });
@@ -43,5 +45,7 @@ const luna =  require('luna-sass/Framework/js/luna.js');
     $('#delete-log, #clean-log, #delete-all-log').click(function () {
         return confirm('Are you sure?');
     });
+
+
 
 })(jQuery, window, document);

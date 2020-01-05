@@ -5,6 +5,7 @@ namespace DesignByCode\Admin\Models;
 
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\Models\Media;
+use DesignByCode\Admin\Traits\HasVideo;
 use Illuminate\Database\Eloquent\Model;
 use DesignByCode\Admin\Traits\LiveAware;
 use CyrildeWit\EloquentViewable\Viewable;
@@ -17,7 +18,7 @@ use CyrildeWit\EloquentViewable\Contracts\Viewable as ViewableContract;
 
 class Product extends Model implements HasMedia, ViewableContract
 {
-    use HasMediaTrait, TaggableTrait, Viewable, LiveAware, Sluggable;
+    use HasMediaTrait, TaggableTrait, Viewable, LiveAware, Sluggable, HasVideo;
 
     protected $fillable = [
         'name',
@@ -45,8 +46,6 @@ class Product extends Model implements HasMedia, ViewableContract
     {
         return in_array(request()->segment(1), ['admin', 'api', 'datatables']) ? 'id' : 'slug';
     }
-
-    // protected $withCount = ['views'];
 
 
     /**

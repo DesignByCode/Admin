@@ -153,8 +153,8 @@
             return {
                 errors: [],
                 categories: {},
-                processing: false,
                 form: this.product,
+                processing: false,
                 data: null,
                 show: false,
             }

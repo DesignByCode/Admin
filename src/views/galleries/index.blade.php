@@ -5,7 +5,7 @@
         <div class="row">
             <div class="md-col-12">
                 <div class="panel panel--default">
-                    <div class="panel__header">{{ __('Categories') }}</div>
+                    <div class="panel__header">{{ __('Galleries') }}</div>
                     <div class="panel__body">
                         <gallery-add></gallery-add>
 

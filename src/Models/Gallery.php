@@ -14,7 +14,7 @@ class Gallery extends Model implements HasMedia
     use HasMediaTrait, Sluggable;
 
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'description'];
 
 
     public function getRouteKeyName()

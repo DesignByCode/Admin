@@ -5,6 +5,7 @@ namespace DesignByCode\Admin\Http\Resources;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 use DesignByCode\Admin\Http\Resources\TagsCollection;
+use DesignByCode\Admin\Http\Resources\VideosCollection;
 
 class ProductResource extends JsonResource
 {
@@ -36,7 +37,8 @@ class ProductResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'tags' => new TagsCollection($this->tags),
-            'images' => MediaResource::collection($this->media)
+            'images' => MediaResource::collection($this->media),
+            'videos' => new VideosCollection($this->videos)
         ];
     }
 }

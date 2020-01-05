@@ -36,16 +36,21 @@
                 </div>
             </div>
             <div class="md-col-4">
+
+                <div class="panel panel--default">
+                    <div class="panel__body">
+                        <video-add :model="{{ $product }}"></video-add>
+
+                        <video-list :model="{{ $product->id }}"></video-list>
+                    </div>
+                </div>
+
                 <div class="panel panel--default">
                     <div class="panel__body">
                         <bar-chart url="api/charts/product/{{ $product->id }}" activities="Views"></bar-chart>
                     </div>
-                </div>
-                <div class="panel panel--default">
-                    <div class="panel__body">
-                        {{-- <tags-select></tags-select> --}}
-                    </div>
-                </div>
+                </div>   
+
             </div>
         </div>
 
