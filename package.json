@@ -16,7 +16,7 @@
   "dependencies": {
     "@tinymce/tinymce-vue": "^2.1.0",
     "animate-sass": "^0.8.2",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "barba.js": "^1.0.0",
     "chart.js": "^2.7.3",
     "codemirror": "^5.49.2",
