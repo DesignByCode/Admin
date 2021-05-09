@@ -29,7 +29,7 @@
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-webpack-plugin": "^2.4.2",
     "laravel-mix": "^4.0.14",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "luna-sass": "^1.15.0",
     "markdown-it": "^10.0.0",
     "moment": "^2.24.0",
